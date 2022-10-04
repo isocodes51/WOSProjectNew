@@ -32,21 +32,23 @@ namespace WOSProjectNew
 
             using (StreamReader sr = new StreamReader(res.GetResponseStream()))
             {
-                string data = sr.ReadToEnd();
-                sr.Close();
+                var data = sr.ReadToEnd();
+               
 
-                WosDBEntities items = JsonConvert.DeserializeObject<WosDBEntities>(data);
-                //dynamic array = items;
-                dynamic array = JsonConvert.DeserializeObject(data);
+               // List<WosDBEntities> items = JsonConvert.DeserializeObject<List<WosDBEntities>>(data);
                 
-                foreach (var item in array)
+              var it = JsonConvert.DeserializeObject<List<WosDBEntities>>(data);
+              
+                foreach (WosDBEntities item in it)
                 {
-                    Console.WriteLine("{0}", item.UT);
+                    Console.WriteLine("Authors:"+item.Authors);
                 }
-                           }
+                
+                sr.Close();
+            }
 
 
-            //dynamic array = JsonConvert.DeserializeObject(json);
+            
 
 
 
