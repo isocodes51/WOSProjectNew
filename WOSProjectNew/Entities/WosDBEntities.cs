@@ -6,7 +6,7 @@ namespace WOSProjectNew.Entities
 {
     public class WosDBEntities
     {
-        public string Authors { get; set; }
+        public string UT { get; set; }
        
         
     }

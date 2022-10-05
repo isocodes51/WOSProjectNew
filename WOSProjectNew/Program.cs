@@ -12,8 +12,8 @@ namespace WOSProjectNew
             ent.ApiKey = "6b46ffda86a7a3e9aa2336cd846bfd5f09e18708";
             ent.Method = "GET";
             ent.UsrQuery = "AI=(AAH-5920-2020)";
-            ent.Countx = 5;
-            ent.FirstRecord = 4;
+            ent.Countx = 4;
+            ent.FirstRecord = 1;
              
             WosManager wos = new WosManager();
                 wos.Conn(ent);
