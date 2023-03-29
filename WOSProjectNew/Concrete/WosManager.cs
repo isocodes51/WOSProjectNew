@@ -12,15 +12,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using WOSProjectNew.Abstract;
-using WOSProjectNew.Concrete;
 using WOSProjectNew.Entities;
 
 
 namespace WOSProjectNew
 {
-    public class WosManager :IWos
+    public class WosManager :IDb
     {
-        public void Conn(WosEntities e)
+        public void Conn(IEntities e)
         {
           HttpWebRequest xhr = (HttpWebRequest)HttpWebRequest.Create(
                                   e.URL+

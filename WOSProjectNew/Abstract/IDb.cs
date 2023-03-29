@@ -5,9 +5,9 @@ using WOSProjectNew.Entities;
 
 namespace WOSProjectNew.Abstract
 {
-    public interface IWos
+    public interface IDb
     {
-        void Conn(WosEntities t);
+        void Conn(IEntities t);
       
     }
 }
