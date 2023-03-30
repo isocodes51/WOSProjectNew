@@ -22,5 +22,6 @@ namespace WOSProjectNew.Entities
         public string EndDate { get ; set; }
         public string DataType { get ; set ; }
         public string AccessMethod { get ; set ; }
+        public string Granularity { get; set ; }
     }
 }
