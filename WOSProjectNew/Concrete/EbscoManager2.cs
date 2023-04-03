@@ -45,7 +45,12 @@ namespace WOSProjectNew.Concrete
 
             }
             ReportHeader reportHeader = JsonConvert.DeserializeObject<ReportHeader>(data);
-            Console.WriteLine($"Report Name: {reportHeader.Report_Name}");
+            
+            var message = reportHeader.Report_Name != null
+                ? reportHeader.Report_Name 
+                : "Null Değer Dönüyor";
+            Console.WriteLine($"Mesaj: {message}");
+             
             
            
 
