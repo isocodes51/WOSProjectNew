@@ -7,7 +7,7 @@ namespace WOSProjectNew.Abstract
 {
     public interface IDb
     {
-        void Conn(IEntities t);
+      void Conn(IEntities e);
       
     }
 }

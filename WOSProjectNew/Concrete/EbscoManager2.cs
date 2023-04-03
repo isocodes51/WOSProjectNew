@@ -1,0 +1,63 @@
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+using System.Dynamic;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml.Linq;
+using WOSProjectNew.Abstract;
+using WOSProjectNew.Entities;
+using static WOSProjectNew.Data.EbscoJsonData;
+
+namespace WOSProjectNew.Concrete
+{
+    public class EbscoManager2 : IDb
+    {
+        public void Conn(IEntities e)
+        {
+            Console.WriteLine("URL: " + e.URL);
+            HttpWebRequest xhr = WebRequest.Create(
+                                  e.URL +
+                                  "?customer_id=" + e.CustomerId +
+                                  "&requestor_id=" + e.RequestorId +
+                                  "&begin_date=" + e.BeginDate +
+                                  "&end_date=" + e.EndDate +
+                                  "&data_type=" + e.DataType +
+                                  "&access_method=" + e.AccessMethod +
+                                  "&granularity=" + e.Granularity
+
+                               ) as HttpWebRequest;
+
+            xhr.Method = e.Method;
+            
+            string data = "";
+            using (HttpWebResponse res = xhr.GetResponse() as HttpWebResponse)
+            {
+                StreamReader reader = new StreamReader(res.GetResponseStream());
+                data = reader.ReadToEnd();
+                
+
+            }
+            ReportHeader reportHeader = JsonConvert.DeserializeObject<ReportHeader>(data);
+            Console.WriteLine($"Report Name: {reportHeader.Report_Name}");
+            
+           
+
+
+
+
+
+
+
+        }
+
+        
+    }
+      
+}
