@@ -44,10 +44,10 @@ namespace WOSProjectNew.Concrete
                 StreamReader reader = new StreamReader(res.GetResponseStream());
                 data = reader.ReadToEnd();
             }
-            ReportHeader reportHeader = JsonConvert.DeserializeObject<ReportHeader>(data);
-            
+            Root ins = JsonConvert.DeserializeObject<Root>(data);
+            ReportHeader reportHeader = ins.Report_Header;
             var message = reportHeader.Report_Name != null
-                ? reportHeader.Report_Name 
+                ? reportHeader.Report_Name
                 : "Null Değer Dönüyor";
             Console.WriteLine($"\n------Mesaj: {message}-------");
         }
