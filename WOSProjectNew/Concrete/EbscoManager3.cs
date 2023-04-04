@@ -51,7 +51,7 @@ namespace WOSProjectNew.Concrete
             List<ReportItem> reportItem = root.Report_Items;
             int toplam = 0;
             List<int> toplamDeger = new List<int>();
-            List<string> itemName = new List<string> {"Unique_Item_Requests","Unique_Item_Investigations","Total_Item_Requests","Total_Item_Investigations" };
+            Dictionary<string> itemName = new List<string> {"Unique_Item_Requests","Unique_Item_Investigations","Total_Item_Requests","Total_Item_Investigations" };
 
            
             
