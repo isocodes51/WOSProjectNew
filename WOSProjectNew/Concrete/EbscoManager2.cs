@@ -19,11 +19,10 @@ namespace WOSProjectNew.Concrete
 {
     public class EbscoManager2 : IDb
     {
-
         public void Conn(IEntities e)
         {
             Console.WriteLine("URL: " + e.URL);
-            HttpWebRequest xhr = (HttpWebRequest)HttpWebRequest.Create(
+            HttpWebRequest xhr = WebRequest.Create(
                                   e.URL +
                                   "?customer_id=" + e.CustomerId +
                                   "&requestor_id=" + e.RequestorId +
@@ -31,25 +30,24 @@ namespace WOSProjectNew.Concrete
                                   "&end_date=" + e.EndDate +
                                   "&data_type=" + e.DataType +
                                   "&access_method=" + e.AccessMethod +
-                                  "&granularity=" + e.Granularity +
-                                  "&attributes_to_show=" + e.AttributesToShow
-                               );
+                                  "&granularity=" + e.Granularity
+
+                               ) as HttpWebRequest;
 
             xhr.Method = e.Method;
-            HttpWebResponse res = xhr.GetResponse() as HttpWebResponse;
-            Console.WriteLine("Status: " + res.StatusCode);
-            Console.WriteLine("Content Type: " + res.ContentType);
-            string data="";
 
-            using (Stream stream = res.GetResponseStream())
+            string data = "";
+            using (HttpWebResponse res = xhr.GetResponse() as HttpWebResponse)
             {
-                StreamReader sr = new StreamReader(stream, System.Text.Encoding.UTF8);
-                data = sr.ReadToEnd();
+                StreamReader reader = new StreamReader(res.GetResponseStream());
+                data = reader.ReadToEnd();
             }
-            InstitutionID institutionID = JsonConvert.DeserializeObject<InstitutionID>(data);
-           
-            Console.WriteLine("Platform: " + institutionID.Value);
-           
+            ReportHeader reportHeader = JsonConvert.DeserializeObject<ReportHeader>(data);
+
+            var message = reportHeader.Report_Name != null
+                ? reportHeader.Report_Name
+                : "Null Değer Dönüyor";
+            Console.WriteLine($"Mesaj: {message}");
         }
     }
 }
