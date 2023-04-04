@@ -21,7 +21,7 @@ namespace WOSProjectNew.Concrete
     {
         public void Conn(IEntities e)
         {
-            Console.WriteLine("URL: " + e.URL);
+            
             HttpWebRequest xhr = WebRequest.Create(
                                   e.URL +
                                   "?customer_id=" + e.CustomerId +
@@ -32,12 +32,15 @@ namespace WOSProjectNew.Concrete
                                   "&access_method=" + e.AccessMethod +
                                   "&granularity=" + e.Granularity
                                ) as HttpWebRequest;
-
+           
+            Console.WriteLine(xhr.RequestUri);
             xhr.Method = e.Method;
             
             string data = "";
             using (HttpWebResponse res = xhr.GetResponse() as HttpWebResponse)
             {
+                Console.WriteLine("Status: " + res.StatusCode);
+                Console.WriteLine("Header: " + res.Headers);
                 StreamReader reader = new StreamReader(res.GetResponseStream());
                 data = reader.ReadToEnd();
             }
@@ -46,7 +49,7 @@ namespace WOSProjectNew.Concrete
             var message = reportHeader.Report_Name != null
                 ? reportHeader.Report_Name 
                 : "Null Değer Dönüyor";
-            Console.WriteLine($"Mesaj: {message}");
+            Console.WriteLine($"\n------Mesaj: {message}-------");
         }
     }
 }
