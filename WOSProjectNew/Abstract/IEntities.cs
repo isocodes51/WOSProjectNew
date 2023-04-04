@@ -20,6 +20,7 @@ namespace WOSProjectNew.Abstract
         public string DataType { get; set; }
         public string AccessMethod { get; set; }
         public string Granularity { get; set; }
+        public string AttributesToShow { get; set; }
 
     }
 }

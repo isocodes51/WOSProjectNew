@@ -29,7 +29,8 @@ namespace WOSProjectNew
                 EndDate="2022-12-31",
                 DataType="Journal",
                 AccessMethod="Regular",
-                Granularity="Totals"
+                Granularity="Totals",
+                AttributesToShow="Access_Method"
             };
 
             //IDb wos = new WosManager();

@@ -21,5 +21,6 @@ namespace WOSProjectNew.Entities
         public string DataType { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public string AccessMethod { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public string Granularity { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string AttributesToShow { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }
