@@ -64,6 +64,7 @@ namespace WOSProjectNew.JSONData
 
     public class Root
     {
+        
         public ReportHeader Report_Header { get; set; }
         public List<ReportItem> Report_Items { get; set; }
     }

@@ -44,12 +44,35 @@ namespace WOSProjectNew.Concrete
                 StreamReader reader = new StreamReader(res.GetResponseStream());
                 data = reader.ReadToEnd();
             }
-            Root ins = JsonConvert.DeserializeObject<Root>(data);
-            ReportHeader reportHeader = ins.Report_Header;
-            var message = reportHeader.Report_Name != null
-                ? reportHeader.Report_Name
-                : "Null Değer Dönüyor";
-            Console.WriteLine($"\n------Mesaj: {message}-------");
+            
+            Root root = JsonConvert.DeserializeObject<Root>(data);
+
+            //ReportHeader reportHeader = root.Report_Header;
+            List<ReportItem> reportItem = root.Report_Items;
+            int toplam = 0;
+            foreach (var item in reportItem)
+            {
+                List<Performance> performance = item.Performance;
+                foreach (var items in performance)
+                {
+                    List<Instance> instance = items.Instance;
+                    foreach (var itemss in instance)
+                    {
+                        //Console.WriteLine(itemss.Metric_Type);
+                      if(itemss.Metric_Type == "Unique_Item_Requests")
+                        {
+                            toplam+=itemss.Count;
+                        }
+                    }
+                }
+
+            }
+            Console.WriteLine(toplam);
+
+            //var message = reportHeader.Report_Name != null
+            //    ? reportHeader.Report_Name
+            //    : "Null Değer Dönüyor";
+            //Console.WriteLine($"\n------Mesaj: {message}-------");
         }
     }
 }
