@@ -36,7 +36,7 @@ namespace WOSProjectNew
             //IDb wos = new WosManager();
             //    wos.Conn(ent);
 
-            IDb ebs = new EbscoManager();
+            IDb ebs = new EbscoManager2();
             ebs.Conn(ent2);
         }
     }

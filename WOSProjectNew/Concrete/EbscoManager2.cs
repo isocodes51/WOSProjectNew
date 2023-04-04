@@ -35,19 +35,34 @@ namespace WOSProjectNew.Concrete
                                ) as HttpWebRequest;
 
             xhr.Method = e.Method;
-
+            
             string data = "";
             using (HttpWebResponse res = xhr.GetResponse() as HttpWebResponse)
             {
                 StreamReader reader = new StreamReader(res.GetResponseStream());
                 data = reader.ReadToEnd();
+                
+
             }
             ReportHeader reportHeader = JsonConvert.DeserializeObject<ReportHeader>(data);
-
+            
             var message = reportHeader.Report_Name != null
-                ? reportHeader.Report_Name
+                ? reportHeader.Report_Name 
                 : "Null Değer Dönüyor";
             Console.WriteLine($"Mesaj: {message}");
+             
+            
+           
+
+
+
+
+
+
+
         }
+
+        
     }
+      
 }
