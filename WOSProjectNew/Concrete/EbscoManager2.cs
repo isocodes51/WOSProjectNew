@@ -31,7 +31,6 @@ namespace WOSProjectNew.Concrete
                                   "&data_type=" + e.DataType +
                                   "&access_method=" + e.AccessMethod +
                                   "&granularity=" + e.Granularity
-
                                ) as HttpWebRequest;
 
             xhr.Method = e.Method;
@@ -41,8 +40,6 @@ namespace WOSProjectNew.Concrete
             {
                 StreamReader reader = new StreamReader(res.GetResponseStream());
                 data = reader.ReadToEnd();
-                
-
             }
             ReportHeader reportHeader = JsonConvert.DeserializeObject<ReportHeader>(data);
             
@@ -50,19 +47,6 @@ namespace WOSProjectNew.Concrete
                 ? reportHeader.Report_Name 
                 : "Null Değer Dönüyor";
             Console.WriteLine($"Mesaj: {message}");
-             
-            
-           
-
-
-
-
-
-
-
         }
-
-        
     }
-      
 }
