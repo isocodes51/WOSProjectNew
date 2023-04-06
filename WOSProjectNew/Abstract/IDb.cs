@@ -7,7 +7,9 @@ namespace WOSProjectNew.Abstract
 {
     public interface IDb
     {
-      void Conn(IEntities e);
-      
+        //string Conn(IEntities e);
+        //int GetCount(string myData, IEntities );
+        void SonucGetir(IEntities e);
+        void Conn(IEntities e);
     }
 }
